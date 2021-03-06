@@ -8,10 +8,10 @@ function getTasks() {
 
 async function addTask(task) {
     // again with the conversions 
-    if(task[0].task_completed === 1) {
-        task[0].task_completed = true
-    } else if(task[0].task_completed === 0) {
-        task[0].task_completed = false
+    if(task.task_completed === 1) {
+        task.task_completed = true
+    } else if(task.task_completed === 0) {
+        task.task_completed = false
     }
     const [task_id] = await db("tasks").insert(task)
     return db("*").from("tasks").where({task_id}).first()

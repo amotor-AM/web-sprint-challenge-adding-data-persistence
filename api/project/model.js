@@ -18,10 +18,10 @@ async function addProject(project) {
     // Looked in the test file and saw that y'all are sending 1's and 0's to the API
     // so I had to implement this code to convert to the right format. It is still 
     // more efficient because I only have to mutate the post instead of the post AND get
-    if(project[0].project_completed === 1) {
-        project[0].project_completed = true;
-    } else if(project[0].project_completed === 0) {
-        project[0].project_completed = false;
+    if(project.project_completed === 1) {
+        project.project_completed = true;
+    } else if(project.project_completed === 0) {
+        project.project_completed = false;
     }
     const [project_id] = await db("projects").insert(project)
     return db("*").from("projects").where({project_id}).first()
